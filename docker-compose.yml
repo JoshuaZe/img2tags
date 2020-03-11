@@ -12,7 +12,7 @@ services:
       - "traefik.backend=img2tags"
       - "traefik.frontend.rule=PathPrefixStrip: /img2tags"
       - "traefik.docker.network=traefik-net"
-      - "traefik.port=5005"
+      - "traefik.port=8081"
 
 networks:
 
