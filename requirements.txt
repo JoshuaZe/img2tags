@@ -1,0 +1,6 @@
+flask
+numpy
+torch
+torchvision
+Pillow
+gunicorn
