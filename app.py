@@ -73,7 +73,7 @@ class StandaloneApplication(gunicorn.app.base.BaseApplication):
 if __name__ == '__main__':
     options = {
         'bind': '%s:%s' % ('0.0.0.0', '8081'),
-        'workers': 4,
+        'workers': 2,
     }
     StandaloneApplication(app, options).run()
     # app.run(debug=True, port=8081)
