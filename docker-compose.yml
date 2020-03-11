@@ -6,16 +6,9 @@ services:
     image: joshuaze/img2tags:1.0
     networks: ['traefik-net']
     restart: always
+    mem_limit: 8g
     expose:
       - 8081
-    deploy:
-      resources:
-        limits:
-          cpus: '0.80'
-          memory: 8000M
-        reservations:
-          cpus: '0.25'
-          memory: 2000M
     labels:
       - "traefik.backend=img2tags"
       - "traefik.frontend.rule=PathPrefixStrip: /img2tags"
