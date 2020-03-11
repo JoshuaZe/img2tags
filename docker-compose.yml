@@ -12,10 +12,10 @@ services:
       resources:
         limits:
           cpus: '0.50'
-          memory: 1000M
+          memory: 4000M
         reservations:
           cpus: '0.25'
-          memory: 100M
+          memory: 2000M
     labels:
       - "traefik.backend=img2tags"
       - "traefik.frontend.rule=PathPrefixStrip: /img2tags"
