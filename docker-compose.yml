@@ -3,9 +3,11 @@ version: '3.0'
 services:
 
   img2tags_server:
-    image: joshuaze/img2tags:1.0
+    image: joshuaze/img2tags:1.1
     networks: ['traefik-net']
     restart: always
+    volumes:
+      - ./models:/home/rsong/image2tags/tutorials/03-advanced/image_captioning/models
     expose:
       - 8081
     labels:
