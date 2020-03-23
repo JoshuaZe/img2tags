@@ -3,7 +3,7 @@ version: '3.0'
 services:
 
   img2tags_server:
-    image: joshuaze/img2tags:1.1
+    image: joshuaze/img2tags:1.0
     networks: ['traefik-net']
     restart: always
     volumes:
