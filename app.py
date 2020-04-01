@@ -4,7 +4,6 @@ import os
 import logging
 from io import BytesIO
 from PIL import Image
-from img2tags.vocabulary import Vocabulary
 from img2tags.run import Img2Tags
 from flask import Flask, request, jsonify
 

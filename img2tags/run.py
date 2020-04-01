@@ -1,7 +1,6 @@
 import torch
 import pickle
 from torchvision import transforms
-from img2tags.vocabulary import Vocabulary
 from img2tags.model import EncoderCNN, DecoderRNN
 from PIL import Image
 
@@ -82,6 +81,6 @@ if __name__ == '__main__':
     NUM_LAYER = 1
     model = Img2Tags(ENCODER_PATH, DECODER_PATH, VOCAB_PATH, EMBED_SIZE, HIDDEN_SIZE, NUM_LAYER)
     image = Image.open(
-        '/Users/zezzhang/Workspace/pytorch-tutorial/tutorials/03-advanced/image_captioning/data/train/0.jpg'
+        '/Users/zezzhang/Workspace/pytorch-tutorial/tutorials/03-advanced/image_captioning/data/train/z48682.jpg'
     )
     print(model.sample_process(image))
