@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+ssh -i ~/Workspace/applesay applesay@139.224.19.230
+ssh -i ~/Workspace/new_ai_box root@139.224.19.230
+
 docker image build -t joshuaze/img2tags:2.0 .
 
 docker push joshuaze/img2tags:2.0

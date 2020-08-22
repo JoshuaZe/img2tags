@@ -6,4 +6,7 @@ data/
 .idea/
 __pycache__/
 data-coco/
+temp/
+extra_images_a/
 models/
+source_data/

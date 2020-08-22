@@ -1,0 +1,8 @@
+matplotlib
+nltk
+numpy
+Pillow
+argparse
+pandas
+retrying
+Cython
