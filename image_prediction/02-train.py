@@ -137,7 +137,7 @@ if __name__ == '__main__':
     parser.add_argument('--num_layers', type=int, default=1, help='number of layers in LSTM')
     parser.add_argument('--num_categories', type=int, default=3, help='number of Category Classes')
     parser.add_argument('--num_epochs', type=int, default=100)
-    parser.add_argument('--batch_size', type=int, default=500)
+    parser.add_argument('--batch_size', type=int, default=250)
     parser.add_argument('--num_workers', type=int, default=8)
     parser.add_argument('--learning_rate', type=float, default=0.001)
     parser.add_argument('--log_step', type=int, default=10, help='step size for printing log info')
