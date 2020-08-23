@@ -104,15 +104,15 @@ def main(args):
                         np.exp(loss_category.item()), np.exp(loss_attributes.item())
                     )
                 )
-                
-            # Save the model checkpoints
-            if (i + 1) % args.save_step == 0:
-                torch.save(encoder.state_dict(), os.path.join(
-                    args.model_path, 'encoder-{}-{}.ckpt'.format(epoch+1, i+1)))
-                torch.save(decoder.state_dict(), os.path.join(
-                    args.model_path, 'decoder-{}-{}.ckpt'.format(epoch+1, i+1)))
-                torch.save(categ_predictor.state_dict(), os.path.join(
-                    args.model_path, 'categ_predictor-{}-{}.ckpt'.format(epoch+1, i+1)))
+
+        # Save the model checkpoints
+        if (epoch + 1) % args.save_step == 0:
+            torch.save(encoder.state_dict(), os.path.join(
+                args.model_path, 'encoder-{}.ckpt'.format(epoch+1)))
+            torch.save(decoder.state_dict(), os.path.join(
+                args.model_path, 'decoder-{}.ckpt'.format(epoch+1)))
+            torch.save(categ_predictor.state_dict(), os.path.join(
+                args.model_path, 'categ_predictor-{}.ckpt'.format(epoch+1)))
 
     # final save
     torch.save(encoder.state_dict(), os.path.join(
@@ -136,12 +136,13 @@ if __name__ == '__main__':
     parser.add_argument('--hidden_size', type=int, default=512, help='dimension of LSTM hidden states')
     parser.add_argument('--num_layers', type=int, default=1, help='number of layers in LSTM')
     parser.add_argument('--num_categories', type=int, default=3, help='number of Category Classes')
-    parser.add_argument('--num_epochs', type=int, default=1000)
+    parser.add_argument('--num_epochs', type=int, default=100)
     parser.add_argument('--batch_size', type=int, default=500)
     parser.add_argument('--num_workers', type=int, default=8)
     parser.add_argument('--learning_rate', type=float, default=0.001)
     parser.add_argument('--log_step', type=int, default=10, help='step size for printing log info')
-    parser.add_argument('--save_step', type=int, default=100, help='step size for saving trained models')
+    parser.add_argument('--save_step', type=int, default=10, help='step size for saving trained models')
     args = parser.parse_args()
     print(args)
     main(args)
+
