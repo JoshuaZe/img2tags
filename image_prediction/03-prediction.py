@@ -4,7 +4,7 @@ import argparse
 import pickle 
 from torchvision import transforms
 from vocabulary import Vocabulary
-from model import EncoderCNN, DecoderRNN
+from model import EncoderCNN, DecoderRNN, CategoryPredictor
 from PIL import Image
 import pandas as pd
 
