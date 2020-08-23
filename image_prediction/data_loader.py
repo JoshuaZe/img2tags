@@ -57,7 +57,7 @@ class TagsAndGeneralCategoryDataset(data.Dataset):
 
         # make category
         category_id = annotation.general_category_id
-        label_category = torch.LongTensor([category_id - 1])
+        label_category = torch.LongTensor([category_id - 1]).squeeze()
         # label_category = torch.zeros(self.num_categories).scatter_(0, label_category_id, 1)
 
         # make attribute tags
