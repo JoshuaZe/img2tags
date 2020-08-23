@@ -4,9 +4,20 @@ import torchvision.models as models
 from torch.nn.utils.rnn import pack_padded_sequence
 
 
-class GPUDataParallel(nn.DataParallel):
+class OpenDataParallel(nn.DataParallel):
+    """custom class so that I can have other attributes than modules."""
+
+    def __init__(self, module, **kwargs):
+        super(OpenDataParallel, self).__init__(module, **kwargs)
+
     def __getattr__(self, name):
-        return getattr(self.module, name)
+        if name is not 'module':
+            try:
+                return getattr(self.module, name)
+            except AttributeError:
+                pass
+
+        return super(nn.DataParallel, self).__getattr__(name)
 
 
 class EncoderCNN(nn.Module):
