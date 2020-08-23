@@ -104,7 +104,7 @@ def collate_fn(batch):
     targets_category = torch.stack(labels_category, 0)
     
     # Merge attribute tags (from tuple of 1D tensor to 2D tensor).
-    attributes_lengths = [len(tags) for tags in labels_attributes]
+    attributes_lengths = torch.IntTensor([len(tags) for tags in labels_attributes])
     targets_attributes = torch.zeros(len(labels_attributes), max(attributes_lengths)).long()
     for i, tags in enumerate(labels_attributes):
         end = attributes_lengths[i]
