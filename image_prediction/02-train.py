@@ -49,10 +49,20 @@ def main(args):
     )
 
     # Build the models
-    encoder = EncoderCNN(args.embed_size).to(device)
-    decoder = DecoderRNN(args.embed_size, args.hidden_size, len(vocab), args.num_layers).to(device)
-    categ_predictor = CategoryPredictor(args.embed_size, args.num_categories).to(device)
-    
+    encoder = EncoderCNN(args.embed_size)
+    decoder = DecoderRNN(args.embed_size, args.hidden_size, len(vocab), args.num_layers)
+    categ_predictor = CategoryPredictor(args.embed_size, args.num_categories)
+
+    if torch.cuda.device_count() > 1:
+        print("Let's use", torch.cuda.device_count(), "GPUs!")
+        encoder = nn.DataParallel(encoder)
+        decoder = nn.DataParallel(decoder)
+        categ_predictor = nn.DataParallel(categ_predictor)
+
+    encoder = encoder.to(device)
+    decoder = decoder.to(device)
+    categ_predictor = categ_predictor.to(device)
+
     # Loss and optimizer
     criterion = nn.CrossEntropyLoss()
     params_encoder = list(encoder.linear.parameters()) + list(encoder.bn.parameters())
@@ -122,16 +132,16 @@ if __name__ == '__main__':
     parser.add_argument('--annotation_path', type=str, default='data/A/train/obj_info.csv', help='path for annotation')
     
     # Model parameters
-    parser.add_argument('--embed_size', type=int, default=512, help='dimension of word embedding vectors')
+    parser.add_argument('--embed_size', type=int, default=256, help='dimension of word embedding vectors')
     parser.add_argument('--hidden_size', type=int, default=512, help='dimension of LSTM hidden states')
     parser.add_argument('--num_layers', type=int, default=1, help='number of layers in LSTM')
     parser.add_argument('--num_categories', type=int, default=3, help='number of Category Classes')
-    parser.add_argument('--num_epochs', type=int, default=10000)
-    parser.add_argument('--batch_size', type=int, default=200)
-    parser.add_argument('--num_workers', type=int, default=4)
+    parser.add_argument('--num_epochs', type=int, default=1000)
+    parser.add_argument('--batch_size', type=int, default=500)
+    parser.add_argument('--num_workers', type=int, default=8)
     parser.add_argument('--learning_rate', type=float, default=0.001)
     parser.add_argument('--log_step', type=int, default=10, help='step size for printing log info')
-    parser.add_argument('--save_step', type=int, default=1000, help='step size for saving trained models')
+    parser.add_argument('--save_step', type=int, default=100, help='step size for saving trained models')
     args = parser.parse_args()
     print(args)
     main(args)
