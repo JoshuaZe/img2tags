@@ -6,7 +6,7 @@ import os
 import pickle
 from data_loader import get_loader
 from udf_transforms import SquarePad
-from model import EncoderCNN, DecoderRNN, CategoryPredictor
+from model import EncoderCNN, DecoderRNN, CategoryPredictor, GPUDataParallel
 from torch.nn.utils.rnn import pack_padded_sequence
 from torchvision import transforms
 
@@ -55,9 +55,9 @@ def main(args):
 
     if torch.cuda.device_count() > 1:
         print("Let's use", torch.cuda.device_count(), "GPUs!")
-        encoder = nn.DataParallel(encoder)
-        decoder = nn.DataParallel(decoder)
-        categ_predictor = nn.DataParallel(categ_predictor)
+        encoder = GPUDataParallel(encoder)
+        decoder = GPUDataParallel(decoder)
+        categ_predictor = GPUDataParallel(categ_predictor)
 
     encoder = encoder.to(device)
     decoder = decoder.to(device)

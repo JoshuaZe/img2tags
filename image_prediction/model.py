@@ -4,6 +4,11 @@ import torchvision.models as models
 from torch.nn.utils.rnn import pack_padded_sequence
 
 
+class GPUDataParallel(nn.DataParallel):
+    def __getattr__(self, name):
+        return getattr(self.module, name)
+
+
 class EncoderCNN(nn.Module):
     def __init__(self, embed_size):
         """Load the pretrained ResNet-152 and replace top fc layer."""
