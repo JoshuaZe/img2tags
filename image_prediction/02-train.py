@@ -9,6 +9,8 @@ from udf_transforms import SquarePad
 from model import EncoderCNN, DecoderRNN, CategoryPredictor, OpenDataParallel
 from torch.nn.utils.rnn import pack_padded_sequence
 from torchvision import transforms
+import warnings
+warnings.filterwarnings('ignore')
 
 
 # Device configuration
