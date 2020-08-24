@@ -11,13 +11,18 @@ from flask import Flask, request, jsonify
 logging.basicConfig(level=logging.DEBUG)
 
 APP_DIR = os.path.abspath(os.path.dirname(__file__))  # This directory
-ENCODER_PATH = os.path.abspath(os.path.join(APP_DIR, 'models/encoder-final.ckpt'))
-DECODER_PATH = os.path.abspath(os.path.join(APP_DIR, 'models/decoder-final.ckpt'))
+ENCODER_PATH = os.path.abspath(os.path.join(APP_DIR, 'models/encoder-512.ckpt'))
+DECODER_PATH = os.path.abspath(os.path.join(APP_DIR, 'models/decoder-512.ckpt'))
 VOCAB_PATH = os.path.abspath(os.path.join(APP_DIR, 'models/vocab.pkl'))
-EMBED_SIZE = 256
+GENERAL_PREDICTOR_PATH = os.path.abspath(os.path.join(APP_DIR, 'models/categ_predictor-512.ckpt'))
+EMBED_SIZE = 512
 HIDDEN_SIZE = 512
 NUM_LAYER = 1
-model = Img2Tags(ENCODER_PATH, DECODER_PATH, VOCAB_PATH, EMBED_SIZE, HIDDEN_SIZE, NUM_LAYER)
+NUM_GENERAL_CATEGORIES = 3
+model = Img2Tags(
+    ENCODER_PATH, DECODER_PATH, VOCAB_PATH, GENERAL_PREDICTOR_PATH,
+    EMBED_SIZE, HIDDEN_SIZE, NUM_LAYER, NUM_GENERAL_CATEGORIES
+)
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
@@ -35,9 +40,9 @@ def handler():
             try:
                 img_binary = each_img.read()
                 image = Image.open(BytesIO(img_binary))
-                img_tags = model.sample_process(image)
+                img_tags, img_general_category = model.sample_process(image)
                 logging.info('Image %s (%d bytes) successfully processed', img_name, len(img_binary))
-                each_ret = {'tags': img_tags, 'filename': img_name}
+                each_ret = {'tags': img_tags, 'general_category': img_general_category, 'filename': img_name}
             except Exception as e:
                 each_ret = {'error': repr(e), 'filename': img_name}
                 logging.error('Image %s processing error message %s', img_name, repr(e))
