@@ -61,9 +61,9 @@ def main(args):
         decoder = OpenDataParallel(decoder)
         categ_predictor = OpenDataParallel(categ_predictor)
 
-    encoder = encoder.to(device)
-    decoder = decoder.to(device)
-    categ_predictor = categ_predictor.to(device)
+    encoder = encoder.train().to(device)
+    decoder = decoder.train().to(device)
+    categ_predictor = categ_predictor.train().to(device)
 
     # Loss and optimizer
     criterion = nn.CrossEntropyLoss()
@@ -134,12 +134,12 @@ if __name__ == '__main__':
     parser.add_argument('--annotation_path', type=str, default='data/A/train/obj_info.csv', help='path for annotation')
     
     # Model parameters
-    parser.add_argument('--embed_size', type=int, default=256, help='dimension of word embedding vectors')
+    parser.add_argument('--embed_size', type=int, default=512, help='dimension of word embedding vectors')
     parser.add_argument('--hidden_size', type=int, default=512, help='dimension of LSTM hidden states')
     parser.add_argument('--num_layers', type=int, default=1, help='number of layers in LSTM')
     parser.add_argument('--num_categories', type=int, default=3, help='number of Category Classes')
     parser.add_argument('--num_epochs', type=int, default=100)
-    parser.add_argument('--batch_size', type=int, default=500)
+    parser.add_argument('--batch_size', type=int, default=1000)
     parser.add_argument('--num_workers', type=int, default=8)
     parser.add_argument('--learning_rate', type=float, default=0.001)
     parser.add_argument('--log_step', type=int, default=10, help='step size for printing log info')
