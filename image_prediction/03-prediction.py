@@ -3,8 +3,8 @@ import torch
 import argparse
 import pickle 
 from torchvision import transforms
-from img2tags.udf_transforms import SquarePad
-from img2tags.model import EncoderCNN, DecoderRNN, CategoryPredictor
+from udf_transforms import SquarePad
+from model import EncoderCNN, DecoderRNN, CategoryPredictor
 from PIL import Image
 import pandas as pd
 

@@ -5,7 +5,7 @@ import numpy as np
 import os
 import pickle
 from data_loader import get_loader
-from img2tags.udf_transforms import SquarePad
+from udf_transforms import SquarePad
 from model import EncoderCNN, DecoderRNN, CategoryPredictor, OpenDataParallel
 from torch.nn.utils.rnn import pack_padded_sequence
 from torchvision import transforms
