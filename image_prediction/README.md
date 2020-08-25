@@ -45,7 +45,7 @@ scp -i ~/Workspace/applesay rsong@iwisher.ddns.net:/home/rsong/img2tagsserving/i
 
 #### 4. Test Model 
 ```bash
-python 05-prediction.py
+python 03-prediction.py
 ```
 
 #### 5. Evaluate Model 
