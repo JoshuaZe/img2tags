@@ -3,7 +3,7 @@ version: '3.0'
 services:
 
   image2tags_server:
-    image: joshuaze/img2tags:2.0
+    image: joshuaze/img2tags:3.0
     restart: always
     volumes:
       - /home/applesay/image2tags/models:/models

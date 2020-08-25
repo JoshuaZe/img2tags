@@ -2,7 +2,7 @@ import torch
 import torchvision.transforms as transforms
 import torch.utils.data as data
 import os
-from udf_transforms import SquarePad
+from img2tags.udf_transforms import SquarePad
 import matplotlib.pyplot as plt
 from PIL import Image
 from pycocotools.coco import COCO

@@ -1,14 +1,9 @@
-import os
 import torch
-import argparse
 import pickle
 from torchvision import transforms
-from udf_transforms import SquarePad
-from vocabulary import Vocabulary
-from model import EncoderCNN, DecoderRNN, CategoryPredictor
+from img2tags.udf_transforms import SquarePad
+from img2tags.model import EncoderCNN, DecoderRNN, CategoryPredictor
 from PIL import Image
-import pandas as pd
-
 
 general_category_dict = {
     1: 'upper-body',

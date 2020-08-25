@@ -5,6 +5,7 @@ import logging
 from io import BytesIO
 from PIL import Image
 from img2tags.run import Img2Tags
+from img2tags.color import extract_main_color
 from flask import Flask, request, jsonify
 
 
@@ -39,10 +40,16 @@ def handler():
             img_name = each_img.filename
             try:
                 img_binary = each_img.read()
+                img_colors = extract_main_color(BytesIO(img_binary))
                 image = Image.open(BytesIO(img_binary))
                 img_tags, img_general_category = model.sample_process(image)
                 logging.info('Image %s (%d bytes) successfully processed', img_name, len(img_binary))
-                each_ret = {'tags': img_tags, 'general_category': img_general_category, 'filename': img_name}
+                each_ret = {
+                    'colors': img_colors,
+                    'tags': img_tags,
+                    'general_category': img_general_category,
+                    'filename': img_name
+                }
             except Exception as e:
                 each_ret = {'error': repr(e), 'filename': img_name}
                 logging.error('Image %s processing error message %s', img_name, repr(e))

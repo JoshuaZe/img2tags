@@ -6,3 +6,6 @@ argparse
 pandas
 retrying
 Cython
+colormath
+colorthief
+colour
