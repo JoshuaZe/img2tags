@@ -1,7 +1,7 @@
 import os
 import torch
 import torchvision.transforms as transforms
-from img2tags.udf_transforms import SquarePad
+from udf_transforms import SquarePad
 import torch.utils.data as data
 import matplotlib.pyplot as plt
 from PIL import Image
