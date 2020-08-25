@@ -55,7 +55,7 @@ def main(args):
     decoder = DecoderRNN(args.embed_size, args.hidden_size, len(vocab), args.num_layers)
     categ_predictor = CategoryPredictor(args.embed_size, args.num_categories)
 
-    if torch.cuda.device_count() > 1:
+    if torch.cuda.device_count() > 1 and args.multi_gpu:
         print("Let's use", torch.cuda.device_count(), "GPUs!")
         encoder = OpenDataParallel(encoder)
         decoder = OpenDataParallel(decoder)
@@ -134,6 +134,7 @@ if __name__ == '__main__':
     parser.add_argument('--annotation_path', type=str, default='data/A/train/obj_info.csv', help='path for annotation')
     
     # Model parameters
+    parser.add_argument('--multi_gpu', type=bool, default=False, help='multiple GPU')
     parser.add_argument('--embed_size', type=int, default=512, help='dimension of word embedding vectors')
     parser.add_argument('--hidden_size', type=int, default=512, help='dimension of LSTM hidden states')
     parser.add_argument('--num_layers', type=int, default=1, help='number of layers in LSTM')
