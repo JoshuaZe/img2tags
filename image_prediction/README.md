@@ -38,7 +38,7 @@ top -d 5
 tail -f nohup_train.out
 nvidia-smi
 
-scp -i ~/Workspace/applesay rsong@iwisher.ddns.net:/home/rsong/img2tagsserving/image_prediction/models/*-49-1000.ckpt /Users/zezzhang/Workspace/img2tags_serving/image_prediction/models
+scp -i ~/Workspace/applesay rsong@iwisher.ddns.net:/home/rsong/img2tagsserving/image_prediction/models/*-220.ckpt /Users/zezzhang/Workspace/img2tags_serving/image_prediction/models
 scp -i ~/Workspace/applesay rsong@iwisher.ddns.net:/home/rsong/img2tagsserving/image_prediction/models/*-final.ckpt /Users/zezzhang/Workspace/img2tags_serving/image_prediction/models
 scp -i ~/Workspace/applesay rsong@iwisher.ddns.net:/home/rsong/img2tagsserving/image_prediction/models/vocab.pkl /Users/zezzhang/Workspace/img2tags_serving/image_prediction/models/vocab.pkl
 ```

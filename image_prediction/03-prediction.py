@@ -173,10 +173,10 @@ if __name__ == '__main__':
     parser.add_argument('--annotation_path', type=str, default='data/A/train/obj_info.csv', help='path for annotation')
     parser.add_argument('--output_folder', type=str, default='data/A/evaluation', help='output folder')
     # Model parameters
-    parser.add_argument('--encoder_path', type=str, default='models/encoder-final.ckpt', help='path trained encoder')
-    parser.add_argument('--decoder_path', type=str, default='models/decoder-final.ckpt', help='path trained decoder')
+    parser.add_argument('--encoder_path', type=str, default='models/encoder-220.ckpt', help='path trained encoder')
+    parser.add_argument('--decoder_path', type=str, default='models/decoder-220.ckpt', help='path trained decoder')
     parser.add_argument('--vocab_path', type=str, default='models/vocab.pkl', help='path for vocabulary wrapper')
-    parser.add_argument('--general_predictor_path', type=str, default='models/categ_predictor-final.ckpt', help='path trained predictor')
+    parser.add_argument('--general_predictor_path', type=str, default='models/categ_predictor-220.ckpt', help='path trained predictor')
     # Model hyper parameters (should be same as parameters in train.py)
     parser.add_argument('--embed_size', type=int, default=512, help='dimension of word embedding vectors')
     parser.add_argument('--hidden_size', type=int, default=512, help='dimension of lstm hidden states')
