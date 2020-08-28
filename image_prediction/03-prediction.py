@@ -120,6 +120,8 @@ def main(args):
     image_meta_path = args.image_meta_path
     annotation_path = args.annotation_path
     output_folder = args.output_folder
+    if not os.path.exists(os.path.dirname(output_folder)):
+        os.makedirs(os.path.dirname(output_folder))
     df_real = None
     if not os.path.exists(annotation_path):
         # assuming each image only has one object
@@ -129,7 +131,7 @@ def main(args):
         lst_image_obj = list(zip(image_names, obj_index, image_names, obj_bbox))
     else:
         df_image = pd.read_csv(image_meta_path, keep_default_na=False)
-        df_annotation_real = pd.read_csv(annotation_path, keep_default_na=False).head(10)
+        df_annotation_real = pd.read_csv(annotation_path, keep_default_na=False)
         df_real = df_annotation_real.merge(df_image, how='left', on='img_id')
         lst_image_obj = list(df_real[[
             'img_id', 'obj_id',
