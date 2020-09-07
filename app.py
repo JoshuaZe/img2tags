@@ -2,6 +2,7 @@
 """The app module, containing the app factory function."""
 import os
 import logging
+import pandas as pd
 from io import BytesIO
 from PIL import Image
 from img2tags.run import Img2Tags
@@ -25,6 +26,9 @@ model = Img2Tags(
     EMBED_SIZE, HIDDEN_SIZE, NUM_LAYER, NUM_GENERAL_CATEGORIES
 )
 
+COLOR_DICT_PATH = os.path.abspath(os.path.join(APP_DIR, 'models/color_dictionary.csv'))
+df_color_dict = pd.read_csv(COLOR_DICT_PATH)
+
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
@@ -40,7 +44,7 @@ def handler():
             img_name = each_img.filename
             try:
                 img_binary = each_img.read()
-                img_colors = extract_main_color(BytesIO(img_binary))
+                img_colors = extract_main_color(BytesIO(img_binary), df_color_dict)
                 image = Image.open(BytesIO(img_binary))
                 img_tags, img_general_category = model.sample_process(image)
                 logging.info('Image %s (%d bytes) successfully processed', img_name, len(img_binary))
