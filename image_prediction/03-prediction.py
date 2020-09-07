@@ -173,7 +173,7 @@ if __name__ == '__main__':
     parser.add_argument('--image_dir', type=str, default='data/A/train/image', help='path for images')
     parser.add_argument('--image_meta_path', type=str, default='data/A/train/img_info.csv', help='path for image meta')
     parser.add_argument('--annotation_path', type=str, default='data/A/train/obj_info.csv', help='path for annotation')
-    parser.add_argument('--output_folder', type=str, default='data/A/evaluation', help='output folder')
+    parser.add_argument('--output_folder', type=str, default='data/A/evaluation/', help='output folder')
     # Model parameters
     parser.add_argument('--encoder_path', type=str, default='models/encoder-220.ckpt', help='path trained encoder')
     parser.add_argument('--decoder_path', type=str, default='models/decoder-220.ckpt', help='path trained decoder')
