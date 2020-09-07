@@ -1,0 +1,244 @@
+hex_code,color_names_zh,color_names_en
+#000000,黑色,Black
+#696969,昏灰色,Dimgray
+#808080,灰色,Gray
+#A9A9A9,暗灰色,Dark Gray
+#C0C0C0,银色,Silver
+#D3D3D3,亮灰色,Light Gray
+#DCDCDC,淡灰白色,Gainsboro
+#F5F5F5,烟白色,White Smoke
+#FFFFFF,白色,White
+#FFFAFA,雪色,Snow
+#625B57,铁灰色,Iron Gray
+#E6C3C3,沙棕色,Sand Beige
+#BC8F8F,玫瑰褐色,Rosy Brown
+#F08080,亮珊瑚色,Light Coral
+#CD5C5C,印度红色,Indian Red
+#A52A2A,褐色,Brown
+#B22222,耐火砖红色,Fire Brick
+#800000,栗色,Maroon
+#8B0000,暗红色,Dark Red
+#E60000,鲜红色,Strong Red
+#FF0000,红色,Red
+#FF4D40,柿子橙色,Persimmon
+#FFE4E1,雾玫瑰色,Misty Rose
+#FA8072,鲑红色,Salmon
+#FF2400,腥红色,Scarlet
+#FF6347,蕃茄红色,Tomato
+#E9967A,暗鲑红色,Dark Salmon
+#FF7F50,珊瑚红色,Coral
+#FF4500,橙红色,Orange Red
+#FFA07A,亮鲑红色,Light Salmon
+#FF4D00,朱红色,Vermilion
+#A0522D,赭黄色,Sienna
+#FF8033,热带橙色,Tropical Orange
+#A16B47,驼色,Camel
+#E69966,杏黄色,Apricot
+#4D1F00,椰褐色,Coconut Brown
+#FFF5EE,海贝色,Seashell
+#8B4513,鞍褐色,Saddle Brown
+#D2691E,巧克力色,Chocolate
+#CC5500,燃橙色,Burnt Orange
+#FF7300,阳橙色,Sun Orange
+#FFDAB9,粉扑桃色,Peach Puff
+#F4A460,沙褐色,Sand Brown
+#B87333,古铜色,Bronze
+#FAF0E6,亚麻色,Linen
+#FFB366,蜜橙色,Honey Orange
+#CD853F,秘鲁色,Peru
+#704214,乌贼墨色,Sepia
+#CC7722,赭色,Ocher
+#FFE4C4,陶坯黄色,Bisque
+#F28500,橘色,Tangerine
+#FF8C00,暗橙色,Dark Orange
+#FAEBD7,古董白色,Antique White
+#D2B48C,日晒色,Tan
+#DEB887,硬木色,Burly Wood
+#FFEBCD,杏仁白色,Blanched Almond
+#FFDEAD,那瓦霍白色,Navajo White
+#FF9900,万寿菊黄色,Marigold
+#FFEFD5,蕃木瓜色,Papaya Whip
+#CCB38C,灰土色,Pale Ocre
+#996B1F,卡其色,Khaki
+#FFE4B5,鹿皮鞋色,Moccasin
+#FDF5E6,旧蕾丝色,Old Lace
+#F5DEB3,小麦色,Wheat
+#FFE5B4,桃色,Peach
+#FFA500,橙色,Orange
+#FFFAF0,花卉白色,Floral White
+#DAA520,金菊色,Goldenrod
+#B8860B,暗金菊色,Dark Goldenrod
+#4D3900,咖啡色,Coffee
+#E6C35C,茉莉黄色,Jasmine
+#FFBF00,琥珀色,Amber
+#FFF8DC,玉米丝色,Cornsilk
+#E6B800,铬黄色,Chrome Yellow
+#FFD700,金色,Golden
+#FFFACD,柠檬绸色,Lemon Chiffon
+#F0E68C,亮卡其色,Light Khaki
+#EEE8AA,灰金菊色,Pale Goldenrod
+#BDB76B,暗卡其色,Dark Khaki
+#E6D933,含羞草黄色,Mimosa
+#FFFDD0,奶油色,Cream
+#FFFFF0,象牙色,Ivory
+#F5F5DC,米黄色,Beige
+#FFFFE0,亮黄色,Light Yellow
+#FAFAD2,亮金橘黄色,Light Goldenrod Yell
+#FFFF99,香槟黄色,Champagne Yellow
+#CCCC4D,芥末黄色,Mustard
+#FFFF4D,月黄色,Moon Yellow
+#808000,橄榄色,Olive
+#FFFF00,鲜黄色,Canary Yellow
+#FFFF00,黄色,Yellow
+#697723,苔藓绿色,Moss Green
+#CCFF00,亮柠檬绿色,Light Lime
+#6B8E23,橄榄军服绿色,Olive Drab
+#9ACD32,黄绿色,Yellow Green
+#556B2F,暗橄榄色,Dark Olive Green
+#8CE600,苹果绿色,Apple Green
+#ADFF2F,绿黄色,Green Yellow
+#99E64D,草绿色,Grass Green
+#7CFC00,草坪绿色,Lawn Green
+#7FFF00,查特酒绿色,Chartreuse
+#73B839,叶绿色,Foliage Green
+#99FF4D,嫩绿色,Fresh Leaves
+#66FF00,明绿色,Bright Green
+#66FF59,钴绿色,Cobalt Green
+#F0FFF0,蜜瓜绿色,Honeydew
+#8FBC8F,暗海绿色,Dark Sea Green
+#90EE90,亮绿色,Light Green
+#98FB98,灰绿色,Pale Green
+#36BF36,常春藤绿色,Ivy Green
+#228B22,森林绿色,Forest Green
+#32CD32,柠檬绿色,Lime Green
+#006400,暗绿色,Dark Green
+#008000,绿色,Green
+#00FF00,鲜绿色,Lime
+#22C32E,孔雀石绿色,Malachite
+#16982B,薄荷绿色,Mint
+#73E68C,青瓷绿色,Celadon Green
+#50C878,碧绿色,Emerald
+#4DE680,绿松石绿色,Turquoise Green
+#127436,铬绿色,Veridian
+#A6FFCC,苍色,Horizon Blue
+#2E8B57,海绿色,Sea Green
+#3CB371,中海绿色,Medium Sea Green
+#F5FFFA,薄荷奶油色,Mint Cream
+#00FF80,春绿色,Spring Green
+#00A15C,孔雀绿色,Peacock Green
+#00FA9A,中春绿色,Medium Spring Green
+#66CDAA,中碧色,Medium Aquamarine
+#7FFFD4,碧蓝色,Aquamarine
+#0DBF8C,青蓝色,Cyan Blue
+#66FFE6,水蓝色,Aqua Blue
+#33E6CC,绿松石蓝色,Turquoise Blue
+#30D5C8,绿松石色,Turquoise
+#20B2AA,亮海绿色,Light Sea Green
+#48D1CC,中绿松色,Medium Turquoise
+#E0FFFF,亮青色,Light Cyan
+#E0FFFF,浅蓝色,Baby Blue
+#AFEEEE,灰绿松石色,Pale Turquoise
+#2F4F4F,暗岩灰色,Dark Slate Gray
+#008080,凫绿色,Teal
+#008B8B,暗青色,Dark Cyan
+#00FFFF,青色,Cyan
+#AFDFE4,水色,Aqua
+#00CED1,暗绿松石色,Dark Turquoise
+#5F9EA0,军服蓝色,Cadet Blue
+#00808C,孔雀蓝色,Peacock Blue
+#B0E0E6,婴儿粉蓝色,Powder Blue
+#006374,浓蓝色,Strong Blue
+#ADD8E6,亮蓝色,Light Blue
+#7AB8CC,灰蓝色,Pale Blue
+#4798B3,萨克斯蓝色,Saxe Blue
+#00BFFF,深天蓝色,Deep Sky Blue
+#87CEEB,天蓝色,Sky Blue
+#87CEFA,亮天蓝色,Light Sky Blue
+#00477D,水手蓝色,Marine Blue
+#003153,普鲁士蓝色,Prussian blue
+#4682B4,钢青色,Steel Blue
+#F0F8FF,爱丽丝蓝色,Alice Blue
+#708090,岩灰色,Slate Gray
+#778899,亮岩灰色,Light Slate Gray
+#1E90FF,道奇蓝色,Dodger Blue
+#004D99,矿蓝色,Mineral Blue
+#007FFF,湛蓝色,Azure
+#5686BF,韦奇伍德瓷蓝色,Wedgwood Blue
+#B0C4DE,亮钢蓝色,Light Steel Blue
+#0047AB,钴蓝色,Cobalt Blue
+#5E86C1,灰丁宁蓝色,Pale Denim
+#6495ED,矢车菊蓝色,Cornflower Blue
+#4D80E6,鼠尾草蓝色,Salvia Blue
+#003399,暗婴儿色,Dark Powder Blue
+#082567,蓝宝石色,Sapphire
+#002FA7,国际克莱因蓝色,International Klein
+#2A52BE,蔚蓝色,Cerulean blue
+#4169E1,品蓝色,Royal Blue
+#24367D,暗矿色,Dark Mineral Blue
+#0033FF,极浓海蓝色,Ultramarine
+#0D33FF,天青石蓝色,Lapis Lazuli
+#F8F8FF,幽灵白色,Ghost White
+#E6E6FA,薰衣草紫色,Lavender
+#CCCCFF,长春花色,Periwinkle
+#191970,午夜蓝色,Midnight Blue
+#000080,藏青色,Navy Blue
+#00008B,暗蓝色,Dark Blue
+#0000CD,中蓝色,Medium Blue
+#0000FF,蓝色,Blue
+#5C50E6,紫藤色,Wisteria
+#483D8B,暗岩蓝色,Dark Slate Blue
+#6A5ACD,岩蓝色,Slate Blue
+#7B68EE,中岩色,Medium Slate Blue
+#6640FF,木槿紫色,Mauve
+#B399FF,紫丁香色,Lilac
+#9370DB,中紫红色,Medium Purple
+#6633CC,紫水晶色,Amethyst
+#8674A1,浅灰紫红色,Grayish Purple
+#5000B8,缬草紫色,Heliotrope
+#B8A1CF,矿紫色,Mineral Violet
+#8A2BE2,蓝紫色,Blue Violet
+#8B00FF,紫罗兰色,Violet
+#4B0080,靛色,Indigo
+#9932CC,暗兰紫色,Dark Orchid
+#9400D3,暗紫色,Dark Violet
+#7400A1,三色堇紫色,Pansy
+#D94DFF,锦葵紫色,Mallow
+#E680FF,优品紫红色,Opera Mauve
+#BA55D3,中兰紫色,Medium Orchid
+#E6CFE6,淡紫丁香色,Pail Lilac
+#D8BFD8,蓟紫色,Thistle
+#CCA3CC,铁线莲紫色,Clematis
+#DDA0DD,梅红色,Plum
+#EE82EE,亮紫色,Light Violet
+#800080,紫色,Purple
+#8B008B,暗洋红色,Dark Magenta
+#FF00FF,洋红色,Magenta
+#F400A1,品红色,Fuchsia
+#DA70D6,兰紫色,Orchid
+#FFB3E6,浅珍珠红色,Pearl Pink
+#B85798,陈玫红色,Old Rose
+#FF66CC,浅玫瑰红色,Rose Pink
+#C71585,中青紫红色,Medium Violet Red
+#FF0DA6,洋玫瑰红色,Magenta Rose
+#FF007F,玫瑰红色,Rose
+#CC0080,红宝石色,Ruby
+#E63995,山茶红色,Camellia
+#FF1493,深粉红色,Deep Pink
+#E68AB8,火鹤红色,Flamingo
+#FF80BF,浅珊瑚红色,Coral Pink
+#FF69B4,暖粉红色,Hot Pink
+#470024,勃艮第酒红色,Burgundy
+#FF73B3,尖晶石红色,Spinel Red
+#E6005C,胭脂红色,Carmine
+#FFD9E6,浅粉红色,Baby Pink
+#990036,枢机红色,Cardinal Red
+#FFF0F5,薰衣草腮红色,Lavender Blush
+#DB7093,灰紫红色,Pale Violet Red
+#DE3163,樱桃红色,Cerise
+#FF8099,浅鲑红色,Salmon Pink
+#DC143C,绯红色,Crimson
+#FFC0CB,粉红色,Pink
+#FFB6C1,亮粉红色,Light Pink
+#FFB3BF,壳黄红色,Shell Pink
+#E32636,茜红色,Alizarin Crimson
+#E9F1F6,霜白色,Hoarfrost White

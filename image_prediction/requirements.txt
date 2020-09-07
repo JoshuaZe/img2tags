@@ -9,3 +9,5 @@ Cython
 colormath
 colorthief
 colour
+opencv-python
+scipy

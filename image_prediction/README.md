@@ -45,7 +45,7 @@ scp -i ~/Workspace/applesay rsong@iwisher.ddns.net:/home/rsong/img2tagsserving/i
 
 #### 4. Test Model 
 ```bash
-python 03-prediction.py
+nohup python -u 03-prediction.py > nohup_prediction.out 2>&1 &
 ```
 
 #### 5. Evaluate Model 

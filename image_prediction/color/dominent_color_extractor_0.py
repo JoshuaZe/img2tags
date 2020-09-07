@@ -3,18 +3,14 @@ import numpy as np
 import math
 from PIL import Image
 from colorthief import MMCQ
-from scipy.stats import multivariate_normal
 from nearest_color import find_nearest_color, rgb_to_hex
 
 
 def saliency_map_by_backprojection(image, levels=3, scale=1):
     # OpenCV is BGR, Pillow is RGB
-    height, width, channels = image.shape
+    height, width, _ = image.shape
     prior_mask = np.zeros((height, width), np.uint8)
-    prior_mask = cv2.circle(prior_mask, (width // 2, height // 2), min(height, width) // 8, 1, -1)
-
-    # cv2.imshow("Prior Mask", image * prior_mask[:, :, np.newaxis])
-
+    prior_mask[height // 4: 3 * height // 4, width // 4: 3 * width // 4] = 1
     source_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     target_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
@@ -27,27 +23,20 @@ def saliency_map_by_backprojection(image, levels=3, scale=1):
     cv2.normalize(target_dst, target_dst, 0, 255, cv2.NORM_MINMAX)
     cv2.equalizeHist(target_dst, target_dst)
 
-    prior_mask_pos = np.dstack(np.meshgrid(np.linspace(0, width - 1, width), np.linspace(0, height - 1, height)))
-    prior_mask = multivariate_normal.pdf(prior_mask_pos, mean=(width // 2, height // 2), cov=max(height, width))
-    cv2.normalize(prior_mask, prior_mask, 0, 1, cv2.NORM_MINMAX)
-
-    target_dst = 0.5 * target_dst + 0.5 * 255 * prior_mask
-
-    return target_dst.astype('uint8')
+    return target_dst
 
 
 def generate_saliency_map(image):
     saliency_map = saliency_map_by_backprojection(image)
 
     # threshold over a saliency map
-    threshold, binary_map = cv2.threshold(saliency_map, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_TRIANGLE)
-    _, binary_map = cv2.threshold(binary_map, 220, 255, cv2.THRESH_BINARY)
+    threshold, binary_map = cv2.threshold(saliency_map, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
     # noise removal
     # https://zhuanlan.zhihu.com/p/46306138
     kernel = np.ones((3, 3), np.uint8)
-    binary_map = cv2.morphologyEx(binary_map, cv2.MORPH_OPEN, kernel, iterations=2)  # 形态开运算
-    binary_map = cv2.morphologyEx(binary_map, cv2.MORPH_CLOSE, kernel, iterations=2)  # 形态闭运算
+    binary_map = cv2.morphologyEx(binary_map, cv2.MORPH_OPEN, kernel, iterations=5)  # 形态开运算
+    binary_map = cv2.morphologyEx(binary_map, cv2.MORPH_CLOSE, kernel, iterations=5)  # 形态闭运算
 
     return saliency_map, binary_map
 
@@ -74,9 +63,6 @@ def find_largest_contour(binary_map):
 
 
 def generate_foreground_mask(image, binary_map, max_contour):
-    mask = None
-    height, width, channels = image.shape
-    pixel_count = height * width
     try:
         # Initial Mask
         mask = binary_map.copy()
@@ -105,9 +91,6 @@ def generate_foreground_mask(image, binary_map, max_contour):
     except Exception as error_msg:
         print(error_msg)
         print("Failed to Build Grab Cut Segmentation")
-
-    # when fail
-    if mask is None:
         # contour
         if max_contour is None:
             mask = binary_map.copy()
@@ -115,9 +98,6 @@ def generate_foreground_mask(image, binary_map, max_contour):
         else:
             mask = np.zeros(binary_map.shape)
             cv2.fillConvexPoly(mask, max_contour, cv2.GC_FGD)
-
-    if np.sum(mask) / pixel_count < 0.1:
-        mask = np.ones(binary_map.shape)
 
     foreground_mask = mask.astype('uint8')
     return foreground_mask
@@ -130,23 +110,17 @@ def generate_attention_mask(image):
     max_contour = find_largest_contour(binary_map)
     # generate foreground mask
     mask = generate_foreground_mask(image, binary_map, max_contour)
-    # debugging
-    cv2.imshow("Original", image)
-    cv2.imshow("SaliencyMap", saliency_map)
-    cv2.imshow("BinaryMap", binary_map)
-    cv2.imshow("Segmentation", image * mask[:, :, np.newaxis])
-    cv2.imshow("MaxContours", cv2.drawContours(image, [max_contour], 0, (0, 255, 0), 3))
-    cv2.waitKey(-1)
+    # # debugging
+    # cv2.imshow("Original", image)
+    # cv2.imshow("SaliencyMap", saliency_map)
+    # cv2.imshow("BinaryMap", binary_map)
+    # cv2.imshow("Segmentation", image * mask[:, :, np.newaxis])
+    # cv2.imshow("MaxContours", cv2.drawContours(image, [max_contour], 0, (0, 255, 0), 3))
+    # cv2.waitKey(-1)
     return mask
 
 
 if __name__ == '__main__':
-    # id_00000002_112834
-    # id_00000002_112837
-    # id_00000001_855
-    # id_00000002_112836
-    # id_00000004_102682
-    # id_00024601_196332
     image = Image.open('/Users/zezzhang/Workspace/img2tags_serving/image_prediction/data/A/train/image/id_00000002_112837.jpg')
     image = image.convert('RGB')
 
@@ -160,32 +134,18 @@ if __name__ == '__main__':
     # https://stackoverflow.com/questions/3241929/python-find-dominant-most-common-color-in-an-image
     # https://www.hisour.com/zh/color-appearance-model-24824/
 
-    # color_count = 8
-    # quality = 10
-    # width, height = image.size
-    # pixels = image.getdata()
-    # pixel_count = width * height
-    # valid_pixels = []
-    # for i in range(0, pixel_count, quality):
-    #     r, g, b, a = pixels[i]
-    #     # If pixel is mostly opaque
-    #     if a >= 125:
-    #         valid_pixels.append((r, g, b))
-    #
-    # # Send array to quantize function which clusters values
-    # # using median cut algorithm
-    # cmap = MMCQ.quantize(valid_pixels, color_count)
-    # cmap.vboxes.sort_key = lambda x: -x['vbox'].count
-    # cmap.vboxes.sort()
-    # pixel_count_by_color = cmap.vboxes.map(lambda x: x['vbox'].count / len(valid_pixels))
-    # dominent_idx = max(sum(np.where(np.array(pixel_count_by_color) >= 0.20, 1, 0)), 1)
-    # print(cmap.palette)
-    # palette = cmap.palette[:dominent_idx]
-    #
-    # for color in palette:
-    #     result = find_nearest_color(color, dist_type='CIE94')
-    #     print(result)
+    color_count = 4
+    width, height = image.size
+    total_pixel_count = width * height
+    imageWithColorPalette = image.convert("P", palette=Image.ADAPTIVE, colors=color_count)
+    palette_colors = sorted(imageWithColorPalette.getcolors(), key=lambda x: -x[0])
+    palette_rgb = imageWithColorPalette.getpalette()
+    palette = [(tuple(palette_rgb[4 * idx:(4 * idx + 3)]), pixel_count/total_pixel_count) for pixel_count, idx in palette_colors]
 
-    # image.show()
-    # imageWithColorPalette = image.convert("P", palette=Image.WEB, colors=color_count)
-    # imageWithColorPalette.show()
+    for color, ratio in palette:
+        print(rgb_to_hex(color), ratio)
+        result = find_nearest_color(color, dist_type='CIE76')
+        print(result)
+
+    image.show("Original")
+    imageWithColorPalette.show(str(color_count) + "Color")
