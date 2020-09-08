@@ -22,13 +22,13 @@ def main(args):
     # instances level evaluation
     df_eval['precision'] = df_eval.apply(
         lambda r:
-            len(set(str(r['real_tags']).split(',')) & set(str(r['pred_tags']).split(','))) / len(str(r['pred_tags']).split(','))
+            len(set(str(r['attribute_tags']).split(',')) & set(str(r['pred_tags']).split(','))) / len(str(r['pred_tags']).split(','))
         ,
         axis=1
     )
     df_eval['recall'] = df_eval.apply(
         lambda r:
-            len(set(str(r['real_tags']).split(',')) & set(str(r['pred_tags']).split(','))) / len(str(r['real_tags']).split(','))
+            len(set(str(r['attribute_tags']).split(',')) & set(str(r['pred_tags']).split(','))) / len(str(r['attribute_tags']).split(','))
         ,
         axis=1
     )
@@ -44,7 +44,7 @@ def main(args):
     counter_pred = Counter()
     counter_correct = Counter()
     for index, row in df_eval.iterrows():
-        row_real_tags = str(row['real_tags']).split(',')
+        row_real_tags = str(row['attribute_tags']).split(',')
         counter_real.update(row_real_tags)
         row_pred_tags = str(row['pred_tags']).split(',')
         counter_pred.update(row_pred_tags)
@@ -77,8 +77,8 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--output_folder', type=str, default='source_data/', help='output folder')
-    parser.add_argument('--evaluation_csv', type=str, default='source_data/images_evaluation.csv', help='real csv')
+    parser.add_argument('--output_folder', type=str, default='data/A/evaluation/', help='output folder')
+    parser.add_argument('--evaluation_csv', type=str, default='data/A/evaluation/image_objects_prediction.csv', help='real csv')
     # Model parameters
     parser.add_argument('--vocab_path', type=str, default='models/vocab.pkl', help='path for vocabulary wrapper')
     args = parser.parse_args()

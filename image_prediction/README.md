@@ -47,6 +47,8 @@ scp -i ~/Workspace/applesay rsong@iwisher.ddns.net:/home/rsong/img2tagsserving/i
 ```bash
 nohup python -u 03-prediction.py > nohup_prediction.out 2>&1 &
 tail -f nohup_prediction.out
+scp -i ~/Workspace/applesay rsong@iwisher.ddns.net:/home/rsong/img2tagsserving/image_prediction/data/A/evaluation/image_objects_prediction.csv /Users/zezzhang/Workspace/img2tags_serving/image_prediction/data/A/evaluation/image_objects_prediction.csv
+
 
 ```
 

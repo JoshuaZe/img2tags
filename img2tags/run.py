@@ -99,7 +99,7 @@ class Img2Tags(object):
         # convert word_ids to words
         sampled_caption = []
         for word_id in sampled_ids:
-            word = vocab.idx2word[word_id]
+            word = vocab.idx2word.get(word_id, '<unk>')
             if word not in ['<start>', '<unk>', '<end>']:
                 sampled_caption.append(word)
             if word == '<end>':

@@ -13,10 +13,10 @@ from flask import Flask, request, jsonify
 logging.basicConfig(level=logging.DEBUG)
 
 APP_DIR = os.path.abspath(os.path.dirname(__file__))  # This directory
-ENCODER_PATH = os.path.abspath(os.path.join(APP_DIR, 'models/encoder-512.ckpt'))
-DECODER_PATH = os.path.abspath(os.path.join(APP_DIR, 'models/decoder-512.ckpt'))
+ENCODER_PATH = os.path.abspath(os.path.join(APP_DIR, 'models/encoder-final.ckpt'))
+DECODER_PATH = os.path.abspath(os.path.join(APP_DIR, 'models/decoder-final.ckpt'))
 VOCAB_PATH = os.path.abspath(os.path.join(APP_DIR, 'models/vocab.pkl'))
-GENERAL_PREDICTOR_PATH = os.path.abspath(os.path.join(APP_DIR, 'models/categ_predictor-512.ckpt'))
+GENERAL_PREDICTOR_PATH = os.path.abspath(os.path.join(APP_DIR, 'models/categ_predictor-final.ckpt'))
 EMBED_SIZE = 512
 HIDDEN_SIZE = 512
 NUM_LAYER = 1
