@@ -2,10 +2,18 @@ version: '3.0'
 
 services:
 
-  image2tags_server:
-    image: joshuaze/img2tags:3.1
+  nginx:
+    image: nginx:latest
     restart: always
+    volumes:
+      - /home/applesay/image2tags/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - image2tags_server
     ports:
-      - 6666:8081
+      - 6666:80
+
+  image2tags_server:
+    image: joshuaze/img2tags:3.2
+    restart: always
     expose:
       - 8081

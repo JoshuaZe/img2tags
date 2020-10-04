@@ -73,9 +73,12 @@ ssh -i ~/Workspace/new_ai_box root@139.224.19.230
 ssh -i ~/Workspace/applesay applesay@139.224.19.230
 scp -i ~/Workspace/applesay -r /Users/zezzhang/Workspace/pytorch-tutorial/tutorials/03-advanced/image_captioning/models applesay@139.224.19.230:/home/applesay/image2tags
 scp -i ~/Workspace/applesay -r ./docker-compose.yml applesay@139.224.19.230:/home/applesay/image2tags
+scp -i ~/Workspace/applesay -r ./nginx.conf applesay@139.224.19.230:/home/applesay/image2tags
 
 docker-compose down
 docker-compose up -d
+docker-compose up --scale image2tags_server=5 -d
+docker-compose ps
 docker stats
 ```
 
