@@ -5,6 +5,8 @@ services:
   image2tags_server:
     image: joshuaze/img2tags:3.1
     restart: always
+    volumes:
+      - /home/applesay/image2tags/models:/models
     ports:
       - 6666:8081
     expose:

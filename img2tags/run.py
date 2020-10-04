@@ -63,7 +63,7 @@ class Img2Tags(object):
         vocab = self.vocab
         encoder = self.encoder
         decoder = self.decoder
-        general_categ_predictor = self.general_categ_predictor
+        # general_categ_predictor = self.general_categ_predictor
         # image pre-processing
         transform = transforms.Compose(
             [
@@ -83,16 +83,16 @@ class Img2Tags(object):
         # Encoding
         feature = encoder(image_tensor)
         # General Category Prediction
-        out_general_category = general_categ_predictor(feature)
-        out_scores, out_indices = torch.sort(out_general_category, descending=True)
-        out_percents = torch.nn.functional.softmax(out_scores, dim=1)
-        general_category_id = out_indices[0][0].item() + 1
-        general_category_score = out_percents[0][0].item()
-        predicted_general_category = dict(
-            category_id=general_category_id,
-            category_name=general_category_dict.get(general_category_id),
-            score=general_category_score
-        )
+        # out_general_category = general_categ_predictor(feature)
+        # out_scores, out_indices = torch.sort(out_general_category, descending=True)
+        # out_percents = torch.nn.functional.softmax(out_scores, dim=1)
+        # general_category_id = out_indices[0][0].item() + 1
+        # general_category_score = out_percents[0][0].item()
+        # predicted_general_category = dict(
+        #     category_id=general_category_id,
+        #     category_name=general_category_dict.get(general_category_id),
+        #     score=general_category_score
+        # )
         # Generate an caption from the image
         sampled_ids = decoder.sample(feature)
         sampled_ids = sampled_ids.flatten().cpu().numpy()
@@ -104,17 +104,17 @@ class Img2Tags(object):
                 sampled_caption.append(word)
             if word == '<end>':
                 break
-        return list(set(sampled_caption)), predicted_general_category
+        return list(set(sampled_caption))
 
 
 if __name__ == '__main__':
     import os
     APP_DIR = os.path.abspath(os.path.dirname(__file__))  # This directory
     PROJ_DIR = os.path.abspath(os.path.join(APP_DIR, '..'))
-    ENCODER_PATH = os.path.abspath(os.path.join(PROJ_DIR, 'models/encoder-512.ckpt'))
-    DECODER_PATH = os.path.abspath(os.path.join(PROJ_DIR, 'models/decoder-512.ckpt'))
+    ENCODER_PATH = os.path.abspath(os.path.join(PROJ_DIR, 'models/encoder-final.ckpt'))
+    DECODER_PATH = os.path.abspath(os.path.join(PROJ_DIR, 'models/decoder-final.ckpt'))
     VOCAB_PATH = os.path.abspath(os.path.join(PROJ_DIR, 'models/vocab.pkl'))
-    GENERAL_PREDICTOR_PATH = os.path.abspath(os.path.join(PROJ_DIR, 'models/categ_predictor-512.ckpt'))
+    GENERAL_PREDICTOR_PATH = os.path.abspath(os.path.join(PROJ_DIR, 'models/categ_predictor-final.ckpt'))
     EMBED_SIZE = 512
     HIDDEN_SIZE = 512
     NUM_LAYER = 1

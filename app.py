@@ -46,12 +46,11 @@ def handler():
                 img_binary = each_img.read()
                 img_colors = extract_main_color(BytesIO(img_binary), df_color_dict)
                 image = Image.open(BytesIO(img_binary))
-                img_tags, img_general_category = model.sample_process(image)
+                img_tags = model.sample_process(image)
                 logging.info('Image %s (%d bytes) successfully processed', img_name, len(img_binary))
                 each_ret = {
                     'colors': img_colors,
                     'tags': img_tags,
-                    'general_category': img_general_category,
                     'filename': img_name
                 }
             except Exception as e:

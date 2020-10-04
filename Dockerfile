@@ -1,5 +1,8 @@
 FROM python:3.6-slim
 
+RUN apt-get update && apt-get install -yq --no-install-recommends \
+    libgl1-mesa-glx libgtk2.0-dev
+
 COPY img2tags             img2tags
 COPY test                 test
 COPY models               models

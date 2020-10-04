@@ -7,7 +7,6 @@ gunicorn
 colormath
 colorthief
 colour
-opencv-python
 opencv-contrib-python
 pandas
 scipy
